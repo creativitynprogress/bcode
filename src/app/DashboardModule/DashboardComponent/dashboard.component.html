@@ -1,0 +1,35 @@
+<div class="main-container">
+  <header class="header-6">
+    <div class="branding">
+      <a href="..." class="nav-link">
+        <span class="title">BCODE</span>
+      </a>
+    </div>
+    <div class="header-actions">
+      <clr-dropdown>
+        <button class="nav-text" clrDropdownTrigger>
+          {{user.email}}
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+          <a clrDropdownItem (click)="logOut()">Cerrar sesión</a>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
+  </header>
+  <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+    <nav class="sidenav">
+      <section class="sidenav-content">
+        <a routerLink="me" routerLinkActive="active" class="nav-link">
+          Perfil
+        </a>
+        <a routerLink="payment" routerLinkActive="active" class="nav-link">
+          Información de pago
+        </a>
+      </section>
+    </nav>
+  </div>
+</div>

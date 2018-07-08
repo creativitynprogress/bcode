@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Tarjetas de credito</h3>
+
+      <button class="btn btn-primary btn-sm" (click)="card_form = true;">Agregar tarjeta</button>
+
+    </div>
+  </div>
+</div>
+
+<clr-modal [(clrModalOpen)]="card_form" [clrModalSize]="'xl'" [clrModalStaticBackdrop]="true">
+    <h3 class="modal-title">Registrar tarjeta</h3>
+    <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-7">
+              <form [formGroup]="cardForm">
+                <section class="">
+                  <div class="field">
+                    <label>Número de tarjeta</label>
+                    <input type="text" placeholder="xxxx xxxx xxxx xxxx" size="100" style="width: 100%" maxlength="19"
+                    formControlName="card_number"
+                    [value]="card_number.value | creditCard"
+                    (keyup)="validateCard(card_number.value)">
+                  </div>
+                  <div class="field">
+                    <label>Títular</label>
+                    <input type="text" placeholder="Juan Pérez" style="width: 100%" formControlName="holder_name">
+                  </div>
+                  <div class="field" style="display: inline-block; width: 30%;">
+                      <label style="display: block;">Fecha de expiración</label>
+                      <input type="number" style="width: 10%;" placeholder="mm" formControlName="expiration_month"> /
+                      <input type="number" style="width: 10%" placeholder="yy" formControlName="expiration_year">
+                  </div>
+                  <div class="field" style="display: inline-block">
+                      <label style="display: block;">CVV</label>
+                    <input type="number" placeholder="CVV"  style="width: 20%" formControlName="cvv2">
+                  </div>
+                </section>
+              </form>
+            </div>
+            <div class="col-md-5"></div>
+          </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="card_form = false">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="basic = false" [disabled]="cardForm.invalid" (click)="createCard()">Guardar</button>
+    </div>
+</clr-modal>
+
+<style>
+  .field {
+    margin-top: 15px;
+  }
+
+  .field input {
+    border: 1px solid gray;
+    border-radius: 5px;
+    height: 2.5em;
+  }
+
+  .ng-valid {
+    border-color: #4DB6AC !important;
+  }
+</style>

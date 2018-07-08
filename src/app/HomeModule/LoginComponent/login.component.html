@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="card login-container">
+      <div class="card-img">
+        <img src="http://via.placeholder.com/350x150">
+      </div>
+      <div class="card-block">
+          <form [formGroup]="userForm">
+            <section class="form-block">
+              <label>Iniciar sesión</label>
+              <div>
+                <input class="input-login" type="text" id="email" placeholder="Email" formControlName="email">
+              </div>
+              <div>
+                <input class="input-login" type="password" id="password" placeholder="Password" formControlName="password">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" style="margin-top: 2em;" [disabled]="userForm.invalid || loading" (click)="login()">Iniciar sesión</button>
+            </section>
+          </form>
+      </div>
+
+      <div class="register">
+        <p style="margin-top: 0;">¿No tienes una cuenta? <a routerLink="/register">Registrarme</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .login-container {
+    margin-top: 15vh;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    width: 40%;
+  }
+
+  .input-login {
+    width: 100%;
+    margin-top: 0.5rem;
+    height: 1.5rem;
+    border-radius: 5px;
+  }
+
+  .register {
+    text-align: center;
+    padding: 1em;
+  }
+</style>
